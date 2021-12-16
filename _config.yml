@@ -290,8 +290,3 @@ defaults:
       related: true
       mathjax: true
       
-window.MathJax = {
-  tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']]
-  }
-};
