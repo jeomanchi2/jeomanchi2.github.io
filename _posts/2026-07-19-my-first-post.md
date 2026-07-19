@@ -3,6 +3,9 @@ title: "포스트 제목"
 date: 2026-07-19
 mathjax: true
 ---
+<!-- embed 태그를 사용하는 방법 -->
+<embed src="assets/2026_중등1차_물리_전공A.pdf" type="application/pdf" width="100%" height="800px" />
+
 ## 1번 문제
 
 <!-- 2026_중등1차_물리_전공A.pdf 1페이지 이미지 삽입 위치 -->
