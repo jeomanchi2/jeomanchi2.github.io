@@ -1,7 +1,7 @@
 ---
 title: "포스트 제목"
 categories:
-  - 중등임용물리
+  - physics
 date: 2026-07-19
 mathjax: true
 ---
