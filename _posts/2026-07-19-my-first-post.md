@@ -4,8 +4,7 @@ date: 2026-07-19
 mathjax: true
 ---
 <!-- embed 태그를 사용하는 방법 -->
-<embed src="assets/2026_A.pdf" type="application/pdf" width="100%" height="800px" />
-
+<iframe src="/assets/2026_A.pdf" width="100%" height="800px" style="border: none;"></iframe>
 
 ## 1번 문제
 
