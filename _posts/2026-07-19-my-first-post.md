@@ -1,5 +1,5 @@
 ---
-title: "포스트 제목"
+title: "26학년도 중등 물리 임용시험 전공A"
 categories:
   - physics
 date: 2026-07-19
