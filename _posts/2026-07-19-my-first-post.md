@@ -1,5 +1,7 @@
 ---
 title: "포스트 제목"
+categories:
+  - physics
 date: 2026-07-19
 mathjax: true
 ---
