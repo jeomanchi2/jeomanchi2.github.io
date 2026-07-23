@@ -8,153 +8,98 @@ toc: true
 toc_sticky: true
 toc_levels: 2..2
 ---
-<!-- embed 태그를 사용하는 방법 -->
 <iframe src="/assets/2026_A.pdf" width="100%" height="800px" style="border: none;"></iframe>
 
 ## 1번 문제
-## 1번 문제
 
-<!-- TikZJax 라이브러리 불러오기 -->
-<link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
-<script src="https://tikzjax.com/v1/tikzjax.js"></script>
+### <풀이 1> 미분형 풀이  
 
-<!-- 그래프 코드 작성 -->
-<script type="text/tikz">
-  \usepackage{pgfplots}
-  \pgfplotsset{compat=1.18}
-  \begin{tikzpicture}
-    \begin{axis}[
-      domain=-3:3, 
-      samples=100, 
-      hide axis, 
-      ylabel=$y$, 
-      xlabel=$x$, 
-      no markers, 
-      axis lines=middle
-    ]
-      \addplot [very thick, blue] {exp(-x^2/2)};
-    \end{axis}
-  \end{tikzpicture}
-</script>
-
-<!-- 2026_중등1차_물리_전공A.pdf 1페이지 이미지 삽입 위치 -->
-<!-- ![1번 문제 이미지](/assets/images/problem1.jpg) -->
-
-### <풀이 1> 미분형 풀이
-
-도체판은 $x$축과 $y$축 방향으로 무한히 넓고, 전류 밀도
-
-$$ \vec J(z)=\alpha |z|\,\hat{x} $$
-
-는 $z$에만 의존한다. 대칭성에 의해 자기장은 $y$축에 나란하고 $z$에만 의존하므로
+도체판은 $x$축과 $y$축 방향으로 무한히 넓고, 전류 밀도  $\vec J(z)=\alpha |z|\,\hat{x}$는 $z$에만 의존한다. 대칭성에 의해 자기장은 $y$축에 나란하고 $z$에만 의존하므로
 
 $$ \vec B(z)=B_y(z)\,\hat{y} $$
 
-로 둘 수 있다. 오른손 법칙에 따라 $z>0$에서는 $-\hat y$ 방향, $z<0$에서는 $+\hat y$ 방향이다. 또한 $z=0$에 대하여 전류 분포가 대칭이므로 $B_y(-z)=-B_y(z)$이며, 특히 $B_y(0)=0$이다.
+로 둘 수 있다. 오른손 법칙에 따라 $z>0$에서는 $-\hat y$ 방향, $z<0$에서는 $+\hat y$ 방향이다. 또한 $z=0$에 대하여 전류 분포가 대칭이므로 $B_y(-z)=-B_y(z)$이며, 특히 $B_x=0$, $B_z=0$이다.
 
-앙페르 법칙의 미분형
+앙페르 법칙의 미분형으로부터 자기장$B_y$는 다음과 같다.
+$$
+\begin{flalign}
 
-$$ \nabla\times\vec B=\mu_0\vec J $$
+&\nabla \times \vec{B} = \mu_0 \vec{J} & \\\\
+&\left( \cancelto{0}{\frac{\partial B_z}{\partial y}} - \frac{\partial B_y}{\partial z} \right)\hat{x} - \left( \cancelto{0}{\frac{\partial B_z}{\partial x}} - \cancelto{0}{\frac{\partial B_x}{\partial z}} \right)\hat{y} + \left( \frac{\partial B_y}{\partial x} - \cancelto{0}{\frac{\partial B_x}{\partial y}} \right)\hat{z} = & \\\\
+&\left( -\frac{\partial B_y}{\partial z}, 0, \frac{\partial B_y}{\partial x} \right) = \mu_0 \vec{J}\quad \because \frac{dB_y}{dx} = \mu_0 J_x \Rightarrow \frac{dB_y}{dx} =0\\\\ 
+&\quad-\frac{dB_y}{dz} = \mu_0 J_z & \\\\
+&\Rightarrow\quad \frac{dB_y}{dz} = -\mu_0\alpha |z| & \\\\
+&\Rightarrow\quad B_y = -\frac{1}{2}\mu_0\alpha z^2 + C \quad \because B_y(0) =0,\quad C=0 &\\\\
+&\Rightarrow\quad B_y = -\frac{1}{2}\mu_0\alpha z^2 &
+\end{flalign}
+$$
+### (1) $z=-\frac{d}{2}$에서 자기장 크기
 
-에서 $x$성분을 비교하면
-
-$$ -\frac{dB_y}{dz}=\mu_0 J_x \quad\Longrightarrow\quad \frac{dB_y}{dz}=-\mu_0\alpha |z| $$
-
-을 얻는다.
-
-### (1) $z=-\frac{d}{2}$에서
-
-$-d \le z \le 0$에서는 $|z|=-z$이므로
-
-$$ \frac{dB_y}{dz}=\mu_0\alpha z. $$
-
-$B_y(0)=0$을 이용하여 적분하면
-
-$$ B_y(z)=\frac{\mu_0\alpha}{2}z^2. $$
-
-따라서
-
-$$ \vec B\!\left(-\frac d2\right) = \frac{\mu_0\alpha d^2}{8}\,\hat y. $$
-
-$$ \boxed{\left|\vec B\!\left(-\frac d2\right)\right| = \frac{\mu_0\alpha d^2}{8}}. $$
-
-### (2) $z=\frac{3d}{2}$에서
-
-$z>d$인 도체판 밖에서는 $J_x=0$이므로 자기장은 일정하다. 따라서 $z=3d/2$에서의 자기장은 도체판의 위쪽 표면 $z=d$에서의 자기장과 같다. $0 \le z \le d$에서는 $|z|=z$이므로
-
-$$ B_y(d)-B_y(0) = -\mu_0\alpha\int_0^d z\,dz = -\frac{\mu_0\alpha d^2}{2}. $$
-
-그러므로
-
-$$ \vec B\!\left(\frac{3d}{2}\right) = -\frac{\mu_0\alpha d^2}{2}\,\hat y. $$
-
-$$ \boxed{\left|\vec B\!\left(\frac{3d}{2}\right)\right| = \frac{\mu_0\alpha d^2}{2}}. $$
-
-따라서 요구한 자기장의 크기는 순서대로
-
-$$ \boxed{\frac{\mu_0\alpha d^2}{8}}, \qquad \boxed{\frac{\mu_0\alpha d^2}{2}} $$
-
-이다.
-
-### <풀이 2> 적분형 풀이
-
-<!-- 직사각형 앙페르 경로의 모식도(TikZ) 이미지 삽입 위치 -->
-<!-- ![앙페르 경로 모식도](/assets/images/ampere_path.jpg) -->
-*직사각형 앙페르 경로의 모식도(그림은 $a>d$인 경우)*
-
-$z=\pm a$에 놓인 두 긴 변의 길이가 $\ell$이고, 긴 변이 $y$축에 나란한 직사각형 앙페르 고리를 잡는다. 경로를 그림의 화살표 방향으로 잡으면 위쪽과 아래쪽 긴 변에서 각각
-
-$$ \int_{\text{위}}\vec B\cdot d\vec\ell=B(a)\ell, \qquad \int_{\text{아래}}\vec B\cdot d\vec\ell=B(a)\ell $$
-
-이다. 왼쪽과 오른쪽 변에서는 $d\vec\ell\perp\vec B$이므로 선적분이 $0$이다. 따라서 앙페르 법칙의 적분형으로부터 
-
-$$ 
-\begin{aligned}
-\oint\vec B(a)\cdot d\vec\ell 
-&=\int_{\text{위}}\vec B(a)\cdot d\vec\ell + \int_{\text{아래}}\vec B(a)\cdot d\vec\ell \\\\
-&\quad+\cancelto{0}{\int_{\text{왼쪽}}\vec B(a)\cdot d\vec\ell} + \cancelto{0}{\int_{\text{오른쪽}}\vec B(a)\cdot d\vec\ell} \\\\
-&=2\int\vec B(a)\cdot d\vec\ell \\\\
-&=2B(a)\ell \\\\
-&=\mu_0 I_{\mathrm{enc}}
-\end{aligned}
+$$
+\begin{flalign}
+&B_y = -\frac{1}{2}\mu_0\alpha z^2 \quad \Leftarrow z=-\frac{d}{2}&\\\\
+&\boxed{B \! \left(-\frac d2\right) = \frac{\mu_0\alpha d^2}{8}} &
+\end{flalign}
 $$
 
-이 된다.
 
-### (1) $a=\frac{d}{2}$인 경우
 
-$0 \le a \le d$이면 앙페르 경로가 둘러싼 전류는
 
-$$ 
+
+### (2) $z=\frac{3d}{2}$에서 자기장 크기
+
+$z>d$인 도체판 밖에서는 $J_x=0$이므로 자기장은 일정하다. 따라서 $z=3d/2$에서의 자기장은 도체판의 위쪽 표면 $z=d$에서의 자기장과 같다. 
+$$
+\begin{flalign}
+
+&B_y \! \left(\frac 32d\right) =B_y \! \left(d\right)\\\\
+&\Rightarrow B_y = -\frac{1}{2}\mu_0\alpha z^2 \quad \Leftarrow z=d&\\\\
+&\Rightarrow\boxed{B_y= \frac{\mu_0\alpha d^2}{2}}
+\end{flalign}
+$$
+
+
+ ### <풀이 2> 적분형 풀이
+
+짧은 변의 길이가 $z$이고, 긴 변의 길이가 $\ell$ 직사각형 앙페르 고리를 잡는다. 적분경로를 반시계 방향으로 잡으면 위쪽과 아래쪽 긴 변에서 각각 다음과 같다.
+
+$$ \int_{\text{위}}\vec B\cdot d\vec\ell=B(z)\ell, \qquad \int_{\text{아래}}\vec B\cdot d\vec\ell=B(z)\ell $$
+
+왼쪽과 오른쪽 짧은변에서는 $d\vec\ell\perp\vec B$이므로 내적이 $0$이다. 따라서 앙페르 법칙의 적분형으로부터 $B$는다음과 같다.
+$$
+\begin{flalign}
+&\oint\vec B(z)\cdot d\vec\ell =\mu_0 I_{enc}\\\\
+&\int_{\text{위}}\vec B(z)\cdot d\vec\ell + \int_{\text{아래}}\vec B(z)\cdot d\vec\ell \quad+\cancelto{0}{\int_{\text{왼쪽}}\vec B(z)\cdot d\vec\ell} + \cancelto{0}{\int_{\text{오른쪽}}\vec B(z)\cdot d\vec\ell}= \mu_0 I_{enc}&\\\\
+&\Rightarrow2\int\vec B(z)\cdot d\vec\ell = \mu_0 I_{enc}& \\\\
+&\Rightarrow2B(z)\ell=\mu_0 I_{enc}& \\\\
+&\Rightarrow B_(z)=\frac{1}{2\ell}\mu_0 I_{\mathrm{enc}}
+\end{flalign}
+$$
+### (1) $z=\frac{d}{2}$인 경우 자기장의 세기
+
+$0 \le z \le d$이면 앙페르 경로가 둘러싼 전류 $I_{enc}$는 다음과 같다.
+$$
 \begin{aligned}
 I_{\mathrm{enc}} 
   &=\int J dA \\\\
-  &=\int_{-a}^{a}\alpha|z|\ell \,dz \\\\
-  &=2\alpha\ell\int_0^a z\,dz \\\\
-  &=\alpha\ell a^2
+  &=\int_{-z}^{z}\alpha|z|\ell \,dz \\\\
+  &=2\alpha\ell\int_0^z z\,dz \\\\
+  &=\alpha\ell z^2
 \end{aligned}
 $$
-
-그러므로
-
-$$ 
-\begin{aligned}
-2B(a)\ell 
-  &=\mu_0 I_{\mathrm{enc}} \\\\
-  &=\mu_0\alpha\ell a^2, \\\\
-B(a)&=\frac{\mu_0\alpha a^2}{2}.
-\end{aligned}
+그러므로 $B(z=-\frac d2)$ 는 다음과 같다.
+$$
+\begin{flalign}
+&B_(z)=\frac{1}{2\ell}\mu_0 I_{\mathrm{enc}} \quad \Leftarrow I_{enc}= \alpha\ell z^2& \\\\
+&B(z)=\frac{\mu_0\alpha z^2}{2}\quad \Leftarrow z = -\frac d2 & \\\\
+&\boxed{B(-\frac d2)=\frac{\mu_0\alpha d^2}{8}}
+\end{flalign}
 $$
 
-$a=d/2$를 대입하면
+### (2) $z=\frac{3d}{2}$인 경우 자기장의 세기
 
-$$ \boxed{\left|\vec B\!\left(-\frac d2\right)\right| = \frac{\mu_0\alpha d^2}{8}}. $$
-
-### (2) $a=\frac{3d}{2}$인 경우
-
-$a>d$이면 앙페르고리를 관통하는 전류 $I_{\mathrm{enc}}$는 도체판의 단면에만 존재하므로
-
-$$ 
+$z>d$이면 앙페르고리를 관통하는 전류 $I_{\mathrm{enc}}$는 도체판의 단면에만 존재하므로 다음과 같다.
+$$
 \begin{aligned}
 I_{\mathrm{enc}} 
   &=\int J\,dA \\\\
@@ -163,178 +108,115 @@ I_{\mathrm{enc}}
   &=\alpha\ell d^2.
 \end{aligned}
 $$
-
-따라서
-
-$$ 
-\begin{aligned}
-2B(a)\ell 
-  &=\mu_0 I_{\mathrm{enc}} \\\\
-  &=\mu_0\alpha\ell d^2.
-\end{aligned}
+그러므로 $B(z=\frac {3d}{2})$ 는 다음과 같다.
+$$
+\begin{flalign}
+&B_(z)=\frac{1}{2\ell}\mu_0 I_{\mathrm{enc}} \quad \Leftarrow I_{enc}= \alpha\ell d^2& \\\\
+&B(z)=\frac{\mu_0\alpha d^2}{2} & \\\\
+&\boxed{B(\tfrac{3d}{2})=\frac{\mu_0\alpha d^2}{2}}
+\end{flalign}
 $$
 
-그러므로
-
-$$ \boxed{\left|\vec B\!\left(\frac{3d}{2}\right)\right| = \frac{\mu_0\alpha d^2}{2}}. $$
-
----
 
 ## 2번 문제
 
-<!-- 2번 문제 이미지 삽입 위치 -->
-
-### <풀이> 고윳값 차이
-
-해밀토니언에서 $E_0 I$를 빼고 $\Delta$로 나눈 무차원 행렬을
-
-$$ 
-A=\frac{H-E_0I}{\Delta} 
-=\begin{pmatrix}
-  0 & i\dfrac{\sqrt3}{2}\\\\[2pt]
-  -i\dfrac{\sqrt3}{2} & 1
-\end{pmatrix}
+고윳값을 구하라고 하였으므로 고윳값 방정식을 세운다.
 $$
-
-로 둔다. $A$의 고윳값을 $\lambda$라고 하면
-
-$$ 
-\begin{aligned}
-0&=\det(A-\lambda I) \\\\
- &=\begin{vmatrix}
-   -\lambda & i\dfrac{\sqrt3}{2}\\\\[2pt]
-   -i\dfrac{\sqrt3}{2} & 1-\lambda
+\begin{flalign}
+&\qquad H\psi=\lambda\psi \\\\
+&\Rightarrow (H-\lambda I)\psi=0 & \\\\
+&\Rightarrow \det(H-\lambda I)=0 & \\\\
+&\Rightarrow \begin{vmatrix}
+   E_0-\lambda & i\dfrac{\sqrt3}{2}\Delta\\\\
+   -i\dfrac{\sqrt3}{2}\Delta & E_\Delta+\Delta-\lambda
  \end{vmatrix} \\\\
- &=\lambda^2-\lambda-\frac34 \\\\
- &=\left(\lambda+\frac12\right)\left(\lambda-\frac32\right).
-\end{aligned}
+ &\Rightarrow(E_0-\lambda)(E_0+\Delta-\lambda)-\frac34\Delta^2=0 \qquad \text{Let} \quad x \equiv E_0-\lambda&\\\\
+ &\Rightarrow x^2+\Delta x-\frac34\Delta^2=0 &\\\\
+ &\Rightarrow x = -\frac32 \Delta ,\quad x = \frac12 \Delta  &\\\\
+ &\Rightarrow \lambda_1  = E_0 -\frac12 \Delta ,\quad \lambda_2 = E_0 + \frac32 \Delta  &\\\\
+ &\Rightarrow \boxed{ |E_2 - E_1| =|\lambda_2 - \lambda_1| = 2\Delta}  &\\\\
+ & E_0, \Delta > 0 이므로 E_1이 바닥상태, E_2가 첫번째 들 뜬 상태 이다. & 
+\end{flalign}
 $$
 
-따라서
 
-$$ \lambda_1=-\frac12, \qquad \lambda_2=\frac32 $$
-
-이고, $H$의 두 고윳값은
-
-$$ E_1=E_0-\frac{\Delta}{2}, \qquad E_2=E_0+\frac{3\Delta}{2} $$
-
-이다. 그러므로 두 고윳값의 차이는
-
-$$ \boxed{|E_2-E_1|=2\Delta}. $$
-
-### 바닥상태와 $\alpha$
-
-$\Delta>0$이므로 바닥상태의 에너지는
-
-$$ E_1=E_0-\frac{\Delta}{2} $$
-
-이다. 문제에 제시된 바닥상태의 계수 벡터는
-
-$$ \begin{pmatrix}\alpha\\\\1\end{pmatrix} $$
-
-에 비례한다. 바닥상태 고유값 방정식
-
-$$ (H-E_1I)\begin{pmatrix}\alpha\\\\1\end{pmatrix}=0 $$
-
-에서
-
-$$ 
-H-E_1I 
-=\Delta 
-\begin{pmatrix}
-  \dfrac12 & i\dfrac{\sqrt3}{2}\\\\[2pt]
-  -i\dfrac{\sqrt3}{2} & \dfrac32
-\end{pmatrix}
+바닥상태 상태함수($\psi_0$)를  구하기 위하여 바닥상태 에너지 $E_0$를  고윳값 방정식에 대입하면
 $$
-
-이므로 첫째 행을 이용하면
-
-$$ \frac12\alpha+i\frac{\sqrt3}{2}=0. $$
-
-따라서
-
-$$ \boxed{\alpha=-i\sqrt3}. $$
-
-실제로 $|\alpha|^2=3$이므로 규격화 인자는
-
-$$ \frac{1}{\sqrt{1+|\alpha|^2}}=\frac12 $$
-
-이고, 규격화된 바닥상태는
-
-$$ \boxed{ |E_1\rangle =\frac12\left(-i\sqrt3\,|0\rangle+|1\rangle\right) }. $$
+\begin{flalign}
+&\qquad H\psi_0=E_1\psi_0& \\\\
+&\Rightarrow(H-E_1I)\begin{pmatrix}\alpha\\1\end{pmatrix}=0 \qquad \because \psi_0 = \alpha \begin{pmatrix}1\\0\end{pmatrix}+ \begin{pmatrix}0\\1\end{pmatrix}=\begin{pmatrix}\alpha\\1\end{pmatrix}&\\
+&\Rightarrow(H-E_1I)\begin{pmatrix}\alpha\\1\end{pmatrix}=0 \qquad \because \psi_0\\
+&\Rightarrow \frac{1}{\sqrt{\quad}}\begin{pmatrix}
+   E_0 -E_1 & i\dfrac{\sqrt3}{2}\Delta\\
+   -i\dfrac{\sqrt3}{2}\Delta & E_0+ \Delta -E_1
+ \end{pmatrix}\begin{pmatrix}\alpha\\\\1\end{pmatrix}=0\\\\
+\end{flalign}
+$$
+이다. 앞서 구한 $E_1=E_0-\frac12\Delta$로 부터 $E_0-E_1=\frac12 \Delta$이고, $E_0+ \Delta -E_1=\frac32\Delta$이므로 
+$$
+\begin{flalign}
+&\Rightarrow \frac{1}{\sqrt{\quad}}\begin{pmatrix}
+   \frac12 \Delta & i\dfrac{\sqrt3}{2}\Delta\\
+   -i\dfrac{\sqrt3}{2}\Delta & \frac32 \Delta
+ \end{pmatrix}\begin{pmatrix}\alpha\\\\1\end{pmatrix}=0&\\\\
+\end{flalign}
+$$
+이다. 이 때, 1행으로부터 $\alpha$를 구하면 다음과 같다.
+$$
+\begin{flalign}
+&\qquad \frac12 \Delta \alpha + i\dfrac{\sqrt3}{2}\Delta =0 &\\\\
+&\Rightarrow \alpha = -i\sqrt3&
+\end{flalign}
+$$
 
 ---
 
 ## 3번 문제
 
-<!-- 3번 문제 이미지 삽입 위치 -->
-
-### <풀이> 회전 관성과 각운동량 보존
-
-(가)에서 물체 A는 회전축 위의 질점이므로 회전 관성 모멘트에 기여하지 않는다. 따라서
-
-$$ I_0=\frac12MR^2, \qquad K_0=\frac12I_0\omega_0^2. $$
-
-(나)에서 A는 질량 $m$, 반지름 $r$인 원판이므로
-
-$$ I=\frac12MR^2+\frac12mr^2. $$
-
-이에 따라
-
-$$ \boxed{\frac{I}{I_0} = \frac{MR^2+mr^2}{MR^2} = 1+\frac{mr^2}{MR^2}}. $$
-
-외부 알짜 토크가 $0$이므로 각운동량이 보존되어
-
-$$ I_0\omega_0=I\omega \quad\Longrightarrow\quad \omega=\frac{I_0}{I}\omega_0. $$
-
-따라서 운동 에너지의 비는
-
-$$ 
-\begin{aligned}
-\frac{K}{K_0} 
-&=\frac{I\omega^2}{I_0\omega_0^2} 
- =\frac{I_0}{I} \\\\
-&=\boxed{\frac{MR^2}{MR^2+mr^2}}.
-\end{aligned}
+(가)에서 물체A는 회전축 위의 질점이므로 회전 관성 모멘트에 기여하지 않는다. 따라서 $\frac{I}{I_0},\frac{K}{K_0}$는 다음과 같다.
+$$
+\begin{flalign}
+&ⅰ)\quad I=\frac{1}{2}MR^2+\frac12 mr^2, \quad I_0=\frac12MR^2 &\\\\ 
+&ⅱ)\quad\boxed{ \frac{I}{I_0} = \frac{MR^2+mr^2}{MR^2}} &
+\end{flalign}
 $$
 
-즉, 원판 A가 펼쳐지면서 회전 관성 모멘트는 증가하고, 각운동량은 보존되지만 회전 운동 에너지는 감소한다.
+$$
+\begin{flalign}
+&ⅰ) K_0 = \frac12 I_0\omega_0^2, \quad K = \frac12 I\omega^2 & \\\\
+&ⅱ)\frac{K}{K_0} =\frac{I\omega^2}{I_0\omega_0^2} \quad \dots ①\\\\
+&ⅲ) \text{각운동량보존}&\\ 
+&\quad I_0\omega_0=I\omega \quad \dots ②&\\\\
+&ⅳ) ①←② & \\
+&\quad \frac{K}{K_0} =\frac{I_0}{I} & \\\\
+&=\boxed{\frac{MR^2}{MR^2+mr^2}}
+\end{flalign}
+$$
 
----
 
 ## 4번 문제
 
-<!-- 4번 문제 이미지 삽입 위치 -->
+문제상황에서 단위시간당 충돌 횟수를 구하라고 하였으므로, 1번 충돌하는데 걸리는 시간을 구하고 역수를 취해 구하도록 하자.  
 
-### <풀이> 장벽 충돌 횟수와 투과 확률
+알파 입자는 핵의 중심을 지나는 지름 방향으로 왕복한다고 가정하였으므로, 한쪽 핵 표면에서 $v$의 속력으로 출발하여 $2R$ 만큼 떨어진 반대쪽 핵 표면까지 도달하여 1번 충돌하는데 걸리는 시간$t$은 다음과 같다. 
 
-알파 입자는 핵의 중심을 지나는 지름 방향으로 왕복한다. 한쪽 핵 표면에서 반대쪽 핵 표면까지의 거리는 $2R$이므로 장벽과 연속해서 충돌하는 데 걸리는 시간은
+$$  t=\frac{2R}{v}. $$
 
-$$ \Delta t=\frac{2R}{v}. $$
+따라서 단위 시간당 장벽에 충돌하는 횟수는 $\frac{1}{t}$이므로, $N$은 다음과 같다.
 
-따라서 단위 시간당 장벽에 충돌하는 횟수는
+$$ \boxed{N=\frac{1}{ t}=\frac{v}{2R}} $$
 
-$$ \boxed{N=\frac{1}{\Delta t}=\frac{v}{2R}}. $$
 
-장벽에 한 번 충돌할 때의 투과 확률이
 
-$$ T=\exp\!\left[ -\frac{2\sqrt{2m(V_0-E)}}{\hbar}a \right] $$
-
-이므로 단위 시간당 투과 확률은 충돌 횟수와 한 번의 투과 확률의 곱으로 주어진다. 즉,
+단위 시간당 투과 확률$P$은 단위시간당 충돌 횟수와 한 번의 투과 확률의 곱으로 주어진다. 즉,
 
 $$ \boxed{ P=NT = \frac{v}{2R} \exp\!\left[ -\frac{2a\sqrt{2m(V_0-E)}}{\hbar} \right]}. $$
 
-$\hbar=h/(2\pi)$를 이용하면 같은 결과를
-
-$$ \boxed{ P=\frac{v}{2R} \exp\!\left[ -\frac{4\pi a}{h}\sqrt{2m(V_0-E)} \right]} $$
-
-로도 쓸 수 있다.
+이다.
 
 ---
 
 ## 5번 문제 및 해설
-
-<!-- 5번 문제 이미지 삽입 위치 -->
 
 ### ㉠ 과학적 사고의 유형
 
@@ -363,8 +245,6 @@ $$ \boxed{\text{백색광은 순수하고 균질한 단일한 빛이다}} $$
 ---
 
 ## 6번 문제 및 해설
-
-<!-- 6번 문제 이미지 삽입 위치 -->
 
 ### ㉠과 ㉡에 나타난 실험의 역할
 
@@ -412,144 +292,133 @@ $$ \boxed{\text{부적절하다.}} $$
 
 ## 8번 문제
 
-<!-- 8번 문제 이미지 삽입 위치 -->
+문제상황에서 A공이 최고점에 도달한다고 하였으므로 $v-t$그래프를 그려보자.
 
-### <풀이>
+이 때, 공A가 최고점에 도달하는 시간은 $t_{A}$, 공B가 이동한 거리를 $S_B$는 다음과 같다.
+$$
+\begin{flalign}
+ &ⅰ)t_{\mathrm{A}}=\frac{v_0}{g}&\\
+ &ⅱ)s_B=v_0t_{\mathrm{A}}+\frac12gt_{\mathrm{A}}^2 = \boxed{\frac{3v_0^2}{2g}}
+\end{flalign}
+$$
 
-위쪽을 $+y$ 방향으로 잡으면
 
-$$ y_A=v_0t-\frac12gt^2, \qquad y_B=H-v_0t-\frac12gt^2. $$
+ $y=0$에 도달할 때의 공A, 공B의 속력을 각각 $v_A,$ $v_B$라 하면, 등가속도 공식 3번으로 부터 h는 다음과 같다.
+$$
+\begin{flalign}
+&ⅰ)\quad 2gh=v_0^2 - v_A^2  \\
+&\Rightarrow\quad 8gh=4v_0^2 - 4v_A^2 \dots①& \\\\
 
-### A가 최고점에 도달하는 동안 B의 이동 거리
+&ⅱ)\quad 2g(H-h)=v_B^2 - v_0^2 \quad\because 2v_A=v_B &\\
+&\Rightarrow\quad 2gH-2gh=4v_A^2 - v_0^2 \dots② &\\\\
 
-A가 최고점에 도달하는 시간은
+&ⅲ)①+②&\\
+&\quad 2gH + 6gh = 3v_0^2&\\
+&\Rightarrow  6gh = 3v_0^2 - 2gH &\\
+&\Rightarrow \boxed{h=\frac{3v_0^2-2gH}{6g} = \frac{v_0^2}{2g}-\frac{H}{3}}& 
+\end{flalign}
+$$
 
-$$ t_{\mathrm{top}}=\frac{v_0}{g} $$
-
-이다. 이 시간 동안 B가 아래쪽으로 이동한 거리는
-
-$$ s_B=v_0t_{\mathrm{top}}+\frac12gt_{\mathrm{top}}^2 = \boxed{\frac{3v_0^2}{2g}}. $$
-
-### B가 $y=0$에 도달할 때의 속력
-
-등가속도 관계식으로
-
-$$ v_B^2=v_0^2+2gH $$
-
-이므로 속력은
-
-$$ \boxed{v_B=\sqrt{v_0^2+2gH}}. $$
-
-### $y=h$에서의 속력 조건
-
-각 물체가 $y=h$를 지날 때의 속력은
-
-$$ v_A^2=v_0^2-2gh, \qquad v_B^2=v_0^2+2g(H-h). $$
-
-$v_A=\frac12v_B$를 제곱하여 대입하면
-
-$$ v_0^2-2gh = \frac14\{v_0^2+2g(H-h)\}. $$
-
-따라서
-
-$$ 4v_0^2-8gh = v_0^2+2gH-2gh $$
-
-이고,
-
-$$ \boxed{h=\frac{3v_0^2-2gH}{6g} = \frac{v_0^2}{2g}-\frac{H}{3}}. $$
 
 ---
 
 ## 9번 문제
 
-<!-- 9번 문제 이미지 삽입 위치 -->
-
-### <풀이> 자기장
-
-점 P에서 전자기파는 $\hat r$ 방향으로 진행하고 전기장은 $\hat\theta$ 방향이다. 평면파에서
-
-$$ \vec B=\frac1c\hat r\times\vec E $$
-
-이고 $\hat r\times\hat\theta=\hat\phi$이므로
-
-$$ \boxed{ \vec B(\theta,t)= \alpha\frac{I_0\sin\theta}{cR} \cos[\omega(t-t')]\,\hat\phi}. $$
-
-따라서 자기장의 크기는 $|\vec E|/c$이고, 코사인 값이 양수일 때 $+\hat\phi$, 음수일 때 $-\hat\phi$ 방향이다.
-
-### 포인팅 벡터와 시간평균
-
-$$ 
-\begin{aligned}
-\vec S(\theta,t) 
-  &=\frac1{\mu_0}\vec E\times\vec B \\\\
-  &=\frac{\alpha^2I_0^2}{\mu_0cR^2} \sin^2\theta\, \cos^2[\omega(t-t')]\,\hat r.
-\end{aligned}
+자기장과 전기장의 관계는 $$ \vec B=\frac1c\hat r\times\vec E $$ 이고 $\hat r\times\hat\theta=\hat\phi$이므로, $B(\theta,t)$는 다음과 같다.
 $$
+\begin{flalign}
+ &\quad B=\frac Ec&\\
+ &\Rightarrow \boxed{\alpha\frac{I_0\sin\theta}{cR} \cos[\omega(t-t')]}&
+ \end{flalign}
+$$
+자기장 방향은 전기장이 $\hat{\theta}$이므로 $\hat{\phi}$ 이다.
 
-주기는 $T=2\pi/\omega$이고, 한 주기 동안 $\langle\cos^2\rangle=1/2$이므로
-
-$$ \boxed{ \langle\vec S(\theta,t)\rangle = \frac{\alpha^2I_0^2}{2\mu_0cR^2} \sin^2\theta\,\hat r}. $$
-
-시간 지연 $t'$은 위상만 이동시키므로 한 주기 시간평균에는 영향을 주지 않는다.
-
----
+포인팅 벡터 $\vec{S}$는 전기장과 자기장의 벡터곱으로 주어진다. 따라서
+$$
+\begin{flalign}
+\vec S(\theta,t)&=\frac1{\mu_0}\vec E\times\vec B& \\\\
+   \qquad &=\frac{\alpha^2I_0^2}{\mu_0cR^2} \sin^2\theta\, \cos^2[\omega(t-t')]\,\hat r.&\\
+\end{flalign}
+$$
+이다. 자료로 부터  $\vec{S}$의 시간평균은 다음과 같다.
+$$
+\begin{flalign}
+<S>&=\frac{\alpha^2I_0^2}{\mu_0cR^2} \sin^2\theta\, \langle\cos^2[\omega(t-t')]\rangle\ \because \frac{1}{2\pi}\int_0^{2\pi} \cos^2x dx= \frac12& \\\\
+   &=\frac{\alpha^2I_0^2}{2\mu_0cR^2} \sin^2\theta \quad &\\\\
+   &\therefore \boxed{<\vec S>=\frac{\alpha^2I_0^2}{2\mu_0cR^2} \sin^2\theta \, \hat r }&
+\end{flalign}
+$$
 
 ## 10번 문제
 
-<!-- 10번 문제 이미지 삽입 위치 -->
+문제상황에서 (가),(나) 상황에서 역학적 평형을 이루고 있으므로, 각 상황에서 세 기체의 압력은 $P_가$, $P_나$ 로 같다. 
+(나)상황에서 XYZ기체의 부피를 각각  $V_X,, V_Y, V_Z$라고 할 때, $V_Y$는 이상기체 상태방정식으로부터 다음과 같다.
+$$
+\begin{flalign}
+ⅰ)&\quad PV=NkT&\\\\
+&\Rightarrow V_Y=\frac{ N_Yk8T_0}{p_나} \dots ① \\\\
 
-### <풀이> 초기 분자 수
+\end{flalign}
+$$
+X, Y, Z 기체의 분자 수를 각각 $N, N_Y, N_Z$라 하면 다음과 같다.
+$$
+\begin{flalign}
 
-(가)에서 세 기체의 압력은 같으며
+ⅱ) &N_=\frac{p_가V_0}{kT_0}, \quad N_Y=\frac{p_가V_0}{k(2T_0)}=\frac N2, \qquad N_Z=\frac{p_가V_0}{kT_0}=N \dots ② &\\\\
+ⅲ) &V_X=\frac{68NkT_0}{p_나},\quad V_Y=\frac{4NkT_0}{p_나},\quad V_Z=\frac{24NkT_0}{p_나} \dots ③ &
 
-$$ p_0=\frac{NkT_0}{V_0}. $$
+\end{flalign}
+$$
+실린더의 전체 부피로 부터 $P_나$ 는 다음과 같다.
 
-따라서 Y와 Z의 분자 수를 각각 $N_Y, N_Z$라 하면
-
-$$ N_Y=\frac{p_0V_0}{k(2T_0)}=\frac N2, \qquad N_Z=\frac{p_0V_0}{kT_0}=N. $$
-
-### (나)에서 Y의 부피와 압력
-
-최종 공통 압력을 $p_f$라 하면 이상 기체 상태방정식으로
-
-$$ V_X=\frac{68NkT_0}{p_f},\quad V_Y=\frac{4NkT_0}{p_f},\quad V_Z=\frac{24NkT_0}{p_f}. $$
-
-실린더의 전체 부피는 일정하므로
-
-$$ 3V_0=V_X+V_Y+V_Z =\frac{96NkT_0}{p_f}. $$
-
-따라서
-
-$$ \boxed{p_f=\frac{32NkT_0}{V_0}}, \qquad \boxed{V_Y=\frac{V_0}{8}}. $$
-
-### $Q_1+Q_2$
-
-전체 실린더는 단열되고 전체 부피가 고정되어 있으므로 외부로 한 일은 $0$이다. Y에는 열이 직접 공급되지 않으므로 전체 계에 가해진 열은
-
-$$ Q_1+Q_2=\Delta U_X+\Delta U_Y+\Delta U_Z $$
-
-이다. 단원자 이상 기체의 내부 에너지는 $U=\frac32N_ikT$이므로 초기 내부 에너지는
-
-$$ U_i=\frac32NkT_0 +\frac32\frac N2k(2T_0) +\frac32NkT_0 =\frac92NkT_0. $$
-
-최종 내부 에너지는
-
-$$ 
-\begin{aligned}
-U_f&=\frac32Nk(68T_0) +\frac32\frac N2k(8T_0) +\frac32Nk(24T_0)\\\\
-   &=144NkT_0.
-\end{aligned}
+$$
+\begin{flalign}
+ⅳ)& 3V_0=V_X+V_Y+V_Z =\frac{96NkT_0}{p_나}&\\
+&\Rightarrow \quad \boxed{p_나=\frac{32NkT_0}{V_0}}\dots ④&\\
+\end{flalign}
+$$
+$V_Y$는 다음과 같다.
+$$
+\begin{flalign}
+Ⅴ)& ①←②,④\\
+& \boxed{V_Y=\frac{V_0}{8}} \dots ⑤&
+\end{flalign}
 $$
 
-그러므로
 
-$$ \boxed{Q_1+Q_2=U_f-U_i = \frac{279}{2}NkT_0}. $$
+전체 실린더는 단열되고 전체 부피가 고정되어 있으므로 외부로 한 일은 $0$이다. 그러니 각각의 기체가 한 일은 고려할 필요가 없다.(가)상황 내부에내지를 $U$, (나)상황 내부에너지를 $U'$ 이라고 할 때, 전체 계에 가해진 열은
+
+$$
+\begin{flalign}
+Ⅵ)& Q_1+Q_2=\Delta U_{tot} = U'_{tot}-U_{tot} \dots ⑥&\\\\
+\end{flalign}
+$$
+
+$$
+\begin{flalign}
+Ⅶ) U_{tot}&=U_{X}+U_{Y}+U_{Z}&\\
+&=\frac32NkT_0 +\frac32\frac N2k(2T_0) +\frac32NkT_0 \\
+&=\frac92NkT_0 \dots ⑦&\\ 
+\end{flalign}
+$$
+
+$$
+\begin{flalign}
+Ⅷ)U'&=\frac32Nk(68T_0) +\frac32\frac N2k(8T_0) +\frac32Nk(24T_0)&\\\\
+   &=144NkT_0 \dots ⑧&
+\end{flalign}
+$$
+
+$$
+\begin{flalign}
+Ⅸ)&⑥←⑦,⑧&\\
+& \boxed{Q_1+Q_2 = \frac{279}{2} NkT_0} &\\\\
+   \end{flalign}
+$$
 
 ---
 
 ## 11번 문제
-
-<!-- 11번 문제 이미지 삽입 위치 -->
 
 ### <풀이> 운동 방정식
 
@@ -586,8 +455,9 @@ $t_1=\pi/(2\omega)$에서
 $$ \boxed{x(t_1)=\frac A8} $$
 
 이고,
+$$
 
-$$ 
+$$
 \begin{aligned}
 v(t_1) 
   &=-3A\omega\sin\frac{3\pi}{2} +\frac{A\omega}{8}\cos\frac\pi2 \\\\
@@ -595,13 +465,16 @@ v(t_1)
 \end{aligned}
 $$
 
+$$
+\begin{aligned}
+|0'\rangle 
+  &=|0\rangle+ \frac{H'_{10}}{E_0-E_1}|1\rangle \\\\
+  &=\boxed{|0\rangle+ \frac{e\alpha}{\sqrt{2m\hbar\omega^3}}|1\rangle}.
+\end{aligned}
+
 ---
 
 ## 12번 문제
-
-<!-- 12번 문제 이미지 삽입 위치 -->
-
-### <풀이> 위치 연산자와 행렬 원소
 
 주어진 소멸 연산자와 생성 연산자를 이용하면
 
@@ -622,15 +495,7 @@ $$ E_0-E_1=-\hbar\omega. $$
 ### 1차 섭동 함수
 
 $n=1$인 항만 남으므로
-
-$$ 
-\begin{aligned}
-|0'\rangle 
-  &=|0\rangle+ \frac{H'_{10}}{E_0-E_1}|1\rangle \\\\
-  &=\boxed{|0\rangle+ \frac{e\alpha}{\sqrt{2m\hbar\omega^3}}|1\rangle}.
-\end{aligned}
 $$
-
 편의를 위해
 
 $$ \beta=\frac{e\alpha}{\sqrt{2m\hbar\omega^3}} $$
@@ -638,8 +503,7 @@ $$ \beta=\frac{e\alpha}{\sqrt{2m\hbar\omega^3}} $$
 로 두면 $|0'\rangle=|0\rangle+\beta|1\rangle$이다.
 
 ### $\langle0|\hat H'|0'\rangle$
-
-$$ 
+$$
 \begin{aligned}
 \langle0|\hat H'|0'\rangle 
   &=\beta\langle0|\hat H'|1\rangle \\\\
@@ -647,7 +511,6 @@ $$
   &=\boxed{-\frac{e^2\alpha^2}{2m\omega^2}}.
 \end{aligned}
 $$
-
 ### $\langle0'|\hat x|0'\rangle$
 
 $\langle0|\hat x|0\rangle=\langle1|\hat x|1\rangle=0$이고
@@ -655,8 +518,7 @@ $\langle0|\hat x|0\rangle=\langle1|\hat x|1\rangle=0$이고
 $$ \langle0|\hat x|1\rangle =\langle1|\hat x|0\rangle =\sqrt{\frac{\hbar}{2m\omega}} $$
 
 이므로
-
-$$ 
+$$
 \begin{aligned}
 \langle0'|\hat x|0'\rangle 
   &=2\beta\sqrt{\frac{\hbar}{2m\omega}} \\\\
