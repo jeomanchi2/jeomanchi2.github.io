@@ -21,9 +21,11 @@ $$ \vec B(z)=B_y(z)\,\hat{y} $$
 로 둘 수 있다. 오른손 법칙에 따라 $z>0$에서는 $-\hat y$ 방향, $z<0$에서는 $+\hat y$ 방향이다. 또한 $z=0$에 대하여 전류 분포가 대칭이므로 $B_y(-z)=-B_y(z)$이며, 특히 $B_x=0$, $B_z=0$이다.
 
 앙페르 법칙의 미분형으로부터 자기장$B_y$는 다음과 같다.
-$$
-\begin{flalign}
+앙페르 법칙의 미분형으로부터 자기장 $B_y$ 는 다음과 같다.
 
+$$
+\require{cancel}
+\begin{flalign}
 &\nabla \times \vec{B} = \mu_0 \vec{J} & \\\\
 &\left( \cancelto{0}{\frac{\partial B_z}{\partial y}} - \frac{\partial B_y}{\partial z} \right)\hat{x} - \left( \cancelto{0}{\frac{\partial B_z}{\partial x}} - \cancelto{0}{\frac{\partial B_x}{\partial z}} \right)\hat{y} + \left( \frac{\partial B_y}{\partial x} - \cancelto{0}{\frac{\partial B_x}{\partial y}} \right)\hat{z} = & \\\\
 &\left( -\frac{\partial B_y}{\partial z}, 0, \frac{\partial B_y}{\partial x} \right) = \mu_0 \vec{J}\quad \because \frac{dB_y}{dx} = \mu_0 J_x \Rightarrow \frac{dB_y}{dx} =0\\\\ 
@@ -33,6 +35,7 @@ $$
 &\Rightarrow\quad B_y = -\frac{1}{2}\mu_0\alpha z^2 &
 \end{flalign}
 $$
+
 ### (1) $z=-\frac{d}{2}$에서 자기장 크기
 
 $$
