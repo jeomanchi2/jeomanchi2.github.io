@@ -12,6 +12,30 @@ toc_levels: 2..2
 <iframe src="/assets/2026_A.pdf" width="100%" height="800px" style="border: none;"></iframe>
 
 ## 1번 문제
+## 1번 문제
+
+<!-- TikZJax 라이브러리 불러오기 -->
+<link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+<script src="https://tikzjax.com/v1/tikzjax.js"></script>
+
+<!-- 그래프 코드 작성 -->
+<script type="text/tikz">
+  \usepackage{pgfplots}
+  \pgfplotsset{compat=1.18}
+  \begin{tikzpicture}
+    \begin{axis}[
+      domain=-3:3, 
+      samples=100, 
+      hide axis, 
+      ylabel=$y$, 
+      xlabel=$x$, 
+      no markers, 
+      axis lines=middle
+    ]
+      \addplot [very thick, blue] {exp(-x^2/2)};
+    \end{axis}
+  \end{tikzpicture}
+</script>
 
 <!-- 2026_중등1차_물리_전공A.pdf 1페이지 이미지 삽입 위치 -->
 <!-- ![1번 문제 이미지](/assets/images/problem1.jpg) -->
