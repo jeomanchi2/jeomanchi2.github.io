@@ -52,9 +52,9 @@ $$
 ### (2) $z=\frac{3d}{2}$에서 자기장 크기
 
 $z>d$인 도체판 밖에서는 $J_x=0$이므로 자기장은 일정하다. 따라서 $z=3d/2$에서의 자기장은 도체판의 위쪽 표면 $z=d$에서의 자기장과 같다. 
+
 $$
 \begin{flalign}
-
 &B_y \! \left(\frac 32d\right) =B_y \! \left(d\right)\\\\
 &\Rightarrow B_y = -\frac{1}{2}\mu_0\alpha z^2 \quad \Leftarrow z=d&\\\\
 &\Rightarrow\boxed{B_y= \frac{\mu_0\alpha d^2}{2}}
@@ -69,6 +69,7 @@ $$
 $$ \int_{\text{위}}\vec B\cdot d\vec\ell=B(z)\ell, \qquad \int_{\text{아래}}\vec B\cdot d\vec\ell=B(z)\ell $$
 
 왼쪽과 오른쪽 짧은변에서는 $d\vec\ell\perp\vec B$이므로 내적이 $0$이다. 따라서 앙페르 법칙의 적분형으로부터 $B$는다음과 같다.
+
 $$
 \begin{flalign}
 &\oint\vec B(z)\cdot d\vec\ell =\mu_0 I_{enc}\\\\
@@ -78,6 +79,7 @@ $$
 &\Rightarrow B_(z)=\frac{1}{2\ell}\mu_0 I_{\mathrm{enc}}
 \end{flalign}
 $$
+
 ### (1) $z=\frac{d}{2}$인 경우 자기장의 세기
 
 $0 \le z \le d$이면 앙페르 경로가 둘러싼 전류 $I_{enc}$는 다음과 같다.
