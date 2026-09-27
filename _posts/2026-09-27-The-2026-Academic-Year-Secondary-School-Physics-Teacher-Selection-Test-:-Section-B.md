@@ -8,7 +8,7 @@ toc: true
 toc_sticky: true
 toc_levels: 2..2
 ---
-<iframe src="/assets/2026_A.pdf" width="100%" height="800px" style="border: none;"></iframe>
+<iframe src="/assets/2026_B.pdf" width="100%" height="800px" style="border: none;"></iframe>
 
 ## 1번 문제
 
