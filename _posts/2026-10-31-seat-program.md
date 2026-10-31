@@ -1,10 +1,12 @@
 ---
-title: "[Python/Flet] 스마트 학급 자리 배치 프로그램 ver.1.0 제작 및 배포"
-date: 2026-10-31 21:00:00 +0900
-categories: [Python, Education]
-tags: [파이썬, Flet, 학급경영]
+title: "스마트 학급 자리 배치 프로그램 ver.1.0"
+categories:
+date: 2026-10-31
+mathjax: true
+toc: true
+toc_sticky: true
+toc_levels: 2..2
 ---
-
 교실에서 학생들과 자리를 바꿀 때마다 더 깔끔한 디자인과 박진감 넘치는 연출을 보여주기 위해 **Python**과 **Google Flet(Flutter 기반 UI 프레임워크)**을 활용해 제작한 **스마트 학급 자리 배치 프로그램 ver.1.0**입니다.
 
 파이썬이 설치되어 있지 않은 교실 PC나 전자칠판에서도 바로 실행할 수 있도록 단일 `.exe` 파일로 빌드하여 공유합니다.
