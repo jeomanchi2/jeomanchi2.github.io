@@ -1,6 +1,7 @@
 ---
 title: "스마트 학급 자리 배치 프로그램 ver.1.0"
-categories: [seat-program]
+categories:
+  - seat-program
 date: 2026-10-31
 mathjax: true
 toc: true
