@@ -8,15 +8,7 @@ toc: true
 toc_sticky: true
 toc_levels: 2..2
 ---
-
-<div class="exam-sticky-layout">
-  <!-- 왼쪽 여백에 고정될 문제 PDF 영역 -->
-  <div class="sticky-problem-area">
-    <iframe src="/assets/2026_A.pdf" width="100%" height="800px" style="border: none;"></iframe>
-  </div>
-
-  <!-- 우측에 스크롤되며 풀이를 읽을 본문 영역 -->
-  <div class="scroll-content-area" markdown="1">
+<iframe src="/assets/2026_A.pdf" width="100%" height="800px" style="border: none;"></iframe>
 
 ## 1번 문제
 
@@ -539,45 +531,3 @@ $$
 $$
 
 이는 전기장에 의해 조화 퍼텐셜의 평형 위치가 $e\alpha/(m\omega^2)$만큼 이동한다는 결과와도 일치한다.
-
-  </div> <!-- scroll-content-area 닫기 -->
-</div> <!-- exam-sticky-layout 닫기 -->
-
-<style>
-/* PC 화면에서 좌우 2단 배치 및 스티키 고정 */
-.exam-sticky-layout {
-  display: flex;
-  align-items: flex-start;
-  gap: 30px;
-  position: relative;
-}
-.sticky-problem-area {
-  position: sticky;
-  top: 80px;
-  width: 450px;
-  flex-shrink: 0;
-}
-.sticky-problem-area iframe {
-  height: 800px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-.scroll-content-area {
-  flex-grow: 1;
-  min-width: 0;
-}
-/* 모바일 화면에서는 세로로 쌓이도록 반응형 처리 */
-@media screen and (max-width: 1024px) {
-  .exam-sticky-layout {
-    flex-direction: column;
-  }
-  .sticky-problem-area {
-    position: static;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  .sticky-problem-area iframe {
-    height: 500px;
-  }
-}
-</style>
